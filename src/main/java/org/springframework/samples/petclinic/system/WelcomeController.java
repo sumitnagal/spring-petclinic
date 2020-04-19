@@ -13,35 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.springframework.samples.petclinic.model;
 
-import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
+package org.springframework.samples.petclinic.system;
 
-/**
- * Simple JavaBean domain object adds a name property to <code>BaseEntity</code>. Used as
- * a base class for objects needing these properties.
- *
- * @author Ken Krebs
- * @author Juergen Hoeller
- */
-@MappedSuperclass
-public class NamedEntity extends BaseEntity {
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 
-	@Column(name = "name")
-	private String name;
+@Controller
+class WelcomeController {
 
-	public String getName() {
-		return this.name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	@Override
-	public String toString() {
-		return this.getName();
+	@GetMapping("/")
+	public String welcome() {
+		return "welcome";
 	}
 
 }
